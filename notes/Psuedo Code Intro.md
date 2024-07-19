@@ -30,10 +30,10 @@ Good psuedocode should do the following things:
 
 If psuedocode is too long or complex, it isn't actually helpful to read. If the language is too technical, or the psuedocode is too close to actual programming, then it's not really much easier than actually just writing the program, and it isn't more convenient to think through. On the opposite hand, we don't want to turn an entire algorithm into one line of psuedocode because it doesn't get us any closer to understanding the problem. Psuedocode is about maintaining a balance between being easy to understand and implementation debt (the less detail you put in your psuedocode, the more you have to work when coding it). 
 
-### Bad Psuedocode Examples
+## Bad Psuedocode Examples
 This will be a collection of bad psuedocode programs. Try to consider why each program is a bad example of psuedocode. 
 
-## Maze Navigation
+### Maze Navigation
 ```text
 set robot to createRobotController()
 
@@ -42,7 +42,7 @@ robot navigate_maze()
 robot end_program()
 ```
 
-### Good Psuedocode Examples
+## Good Psuedocode Examples
 
 # Links
  - https://en.wikipedia.org/wiki/Pseudocode 
