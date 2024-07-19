@@ -15,8 +15,8 @@ def thread_function(name): # our first function
 #  ===== Main Loop =====
 if __name__ == "__main__":
     print("Main thread started")
-    # Create two thread variables with different functions and names
-    x = threading.Thread(target=thread_function, args=(1,)) # thread 1
+    
+    x = threading.Thread(target=thread_function, args=(1,)) # create our thread
     
     # start both of our threads
     x.start()
@@ -44,8 +44,8 @@ def keep_alive(): # our first function
 
 if __name__ == "__main__":
     print("Main thread started")
-    # Create two thread variables with different functions and names
-    x = threading.Thread(target=keep_alive, args=()) # thread 1
+    
+    x = threading.Thread(target=keep_alive, args=()) # create our thread
 
     x.start() # start our thread
 
