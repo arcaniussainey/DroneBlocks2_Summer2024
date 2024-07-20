@@ -277,6 +277,7 @@ You got it right!
 
 But what if we want our program to do something when the condition is false too? This is where the ```else``` keyword comes in. An ```else``` condition only runs when the if-statement above it evaluates to False. Consider this example
 
+```Python
 string = "test"
 
 if string == "password": # Our condition is that the variable string equals "password"
@@ -289,7 +290,7 @@ You got it wrong... :(
 ```
 
 In this case, we get an output either way. Notice that our else-statement is outside the scope of the if-statement, and doesn't have a condition of its own. These are also chained, so if the if-statement evaluates to True the else-statement won't run. Modify the example so the if-statement evaluates to true again! If we wanted to pair another condition with the if statement, we could use the ```elif``` keyword. An ```elif``` has the same rules as an if-statement, but it has to follow after an if-statement, and it won't run if the if-statement is True. 
-
+```Python
 string = "second_password"
 
 if string == "password": # Our condition is that the variable string equals "password"
