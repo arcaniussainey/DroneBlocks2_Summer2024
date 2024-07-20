@@ -1,3 +1,7 @@
+### Prerequisites:
+ - Python: Basics
+ - Psuedocode Intro
+
 # What is a Function?
 A function is a block of code we give a name, that only runs when we tell it to, and only has the data we give it. Functions can return data during or at the end of their execution. 
 
