@@ -124,6 +124,9 @@ Main Code Finished
 
 Look at this example, and look at the "args" parameter. Its value is ```("Test",)``` rather than ```("Test")```. This is intentional and required for passing parameters to the threading module.
 
+# Thread Locks
+
+
 # Using Threads
 We use threads when we have multiple things we want to do, but don't want to create our own system for switching between tasks. In our case, threads are useful for switching between sending the drone commands and getting the camera feed, for instance. 
 
