@@ -486,6 +486,30 @@ Built-In Functions:
  - int
  - len
 
+# Imports 
+For functions we might need that aren't built-in to Python, we can use what are called modules. Modules are bundles of code other people wrote. We can use the ```import``` keyword to add them to our code. 
+
+Let's import the ```random``` module to generate random numbers. To import a module, we just type ```import {module_name}```. See below:
+
+```Python
+import random
+```
+
+Once we've imported code, we can call the functions and create the objects from that module by using the module's name with the dot-operator (.) which tells Python to search under an Object. 
+
+```Python
+import random
+
+rand_number = random.randint(0, 1000) # Generates a random number
+
+print(rand_number) # print out the number.
+```
+```text
+773
+```
+
+We call the ```randint``` function from the ```random``` module, which generates a random number between the parameters we pass it. There are too many modules to comment on them all here, so instead we'll mention modules when and as needed, and the functions we'll need.
+
 # Links
  - https://www.w3schools.com/python/python_intro.asp
  - https://docs.python.org/3.11/
