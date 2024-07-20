@@ -85,3 +85,10 @@ if __name__ == "__main__": # Ensure this is the file being run
         print("Waiting to exit")
         thread.join()
 ```
+```text
+The user said: 
+Write some text: Hello World!!!
+The user said: Hello World!!!
+Write some text: Wowsa!
+The user said: Wowsa!
+```
