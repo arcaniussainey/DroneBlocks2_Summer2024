@@ -409,6 +409,73 @@ for a in range(0, 45, 5):
 40
 ```
 
+
+# Scope & Nesting
+We mentioned that loops and if statements have their own scope. It is possible to combine those. It's worth noting that once we break scope, we can't go back to the same one, we just create a different scope. That means we can, for example, have two subloops in one main loop:
+
+```Python
+a = 0
+
+while a < 4:
+    for i in range (0, 3):
+        print("For Loop Ran")
+    
+    b = 0
+    while b < 2:
+        print("While Loop Ran")
+        b += 1
+    
+    a += 1
+```
+```text
+For Loop Ran
+For Loop Ran
+For Loop Ran
+While Loop Ran
+While Loop Ran
+For Loop Ran
+For Loop Ran
+For Loop Ran
+While Loop Ran
+While Loop Ran
+For Loop Ran
+For Loop Ran
+For Loop Ran
+While Loop Ran
+While Loop Ran
+For Loop Ran
+For Loop Ran
+For Loop Ran
+While Loop Ran
+While Loop Ran
+```
+
+We can also combine while-loops and if conditionals, for example:
+```Python
+a = 0 
+
+while a <= 5:
+    print("While statement ran")
+    if (a % 2) == 1:
+        print("If statement Ran!")
+    
+    if (a == 5):
+        print("a is 5")
+    a += 1
+```
+```text
+While statement ran
+While statement ran
+If statement Ran!
+While statement ran
+While statement ran
+If statement Ran!
+While statement ran
+While statement ran
+If statement Ran!
+a is 5
+```
+
 # Functions & Built-Ins
 Functions will be outlined in more depth later, but for now know that they're used to call other pieces of code to do things for us. ```print``` and ```range``` are functions Python provides to us. We will be using many functions provided through DroneBlocks and OpenCV, so it's good to at least understand that they exist. Functions can either accept no input, or can accept input parameters they'll use. ```print``` for instance accepts a string, which it outputs to the terminal, and if you leave it empty it will send an empty message. 
 
