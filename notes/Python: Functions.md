@@ -124,6 +124,67 @@ print(a(number_list))
 
 This is why it's important that we actually call functions, and why we can't just ignore the parentheses if we have no parameters. 
 
+## Scope & Functions
+As we explained earlier, scope is the area to which stuff belongs, but there is a separate scope for code and data. The scope of code determines the movement of the execution line through our control flow. So for instance, the code under an if statement isn't in the scope of the rest of the program. But the data will be, so if we create a variable within an if-statement it will remain in existence. 
+
+```Python
+print("Main scope")
+
+if True:
+    a = "If Scope"
+    print(a)
+
+print(a) # we can still use a
+```
+```text
+Main scope
+If Scope
+If Scope
+```
+
+This is not always the case with data. Functions have their own scope for both data and code, so something like this will error out:
+
+```Python
+print("Main scope")
+
+def example():
+    a = "If Scope"
+    print(a)
+
+example()
+
+print(a)
+```
+```text
+Main scope
+If Scope
+Traceback (most recent call last):
+  File "c:\Users\waltba04\Desktop\test.py", line 9, in <module>
+    print(a)
+          ^
+NameError: name 'a' is not defined
+```
+
+We can move something out of the function's scope (or make sure a function can see it) by using the "global" keyword. Global adds something to the scope for everything, but it can be dangerous as it might override other variables being used inside functions. Example:
+
+```Python
+print("Main scope")
+
+def example():
+    global a
+    a = "Global Scope"
+    print(a)
+
+example()
+
+print(a)
+```
+```text
+Main scope
+Global Scope
+Global Scope
+```
+
 # Using Functions 
 When do we use functions? We want to use functions when they make code easier to understand, quicker to write, easier to debug, or allow us to make things more modular. 
 
