@@ -39,3 +39,7 @@ We implemented something to collect the menu choice and print the error message,
 ![image](https://github.com/user-attachments/assets/7c026a2f-bb5c-423d-80f7-8908a6ada576)
 
 
+It's a lot even with the diagram, but it'd be worse if it were just code - even if it were a simplified psuedocode. One would typically use a diagram to outline the overall functionality of a program (specifically the decisions we make throughout the program) and then use psuedocode to plan out the specific details. 
+
+## Links
+ - https://www.drawio.com/
