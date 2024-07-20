@@ -417,3 +417,7 @@ Built-In Functions:
  - str
  - int
  - len
+
+# Links
+ - https://www.w3schools.com/python/python_intro.asp
+ - https://docs.python.org/3.11/
