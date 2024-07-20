@@ -508,7 +508,19 @@ print(rand_number) # print out the number.
 773
 ```
 
-We call the ```randint``` function from the ```random``` module, which generates a random number between the parameters we pass it. There are too many modules to comment on them all here, so instead we'll mention modules when and as needed, and the functions we'll need.
+We call the ```randint``` function from the ```random``` module, which generates a random number between the parameters we pass it. There are too many modules to comment on them all here, so instead we'll mention modules when and as needed, and the functions we'll need. Though, here is a couple of useful modules:
+
+### time
+The ```time``` module provides tools for measuring time, waiting for a period time, getting the time, and timing functions. Some useful methods are:
+ - time.time() - Returns the time in seconds since 1970
+ - time.sleep(x) - Pauses the program for x seconds
+ - time.thread_time() - When run in thread, returns time thread has spent executing (excludes time spent sleeping)
+
+### random
+The ```random``` module provides tools for random selection and generation. Some useful methods are:
+ - random.choice(x) - returns a random choice from a container
+ - random.randint(start, end) - returns a random number between start and end.
+
 
 # Links
  - https://www.w3schools.com/python/python_intro.asp
