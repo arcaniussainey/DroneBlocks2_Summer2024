@@ -1,4 +1,4 @@
-# Remote Controlled Drone
+# Blob Identification
 The goal of this activity is to implement a program which allows you to identify a target blob whenever it is within the view of your drone. It should not crash when the blob is outside your drone's view, and it should not identify single pixels as blobs. 
 
 # Project Requirements
