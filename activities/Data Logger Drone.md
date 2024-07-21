@@ -1,8 +1,8 @@
-# Remote Controlled Drone
+# Data Logger Drone
 The goal of this activity is to implement a program which logs some data read from your drone to a graph. 
 
 # Project Requirements
- - Display a graph of *some* or *all* sensor data. 
+ - Display a graph of *some* or *all* sensor data.
  - Be able to shutoff/abort drone​ using user input​
 
 # Example Implementation
@@ -61,7 +61,7 @@ upon error:
 # Challenges/Features
  - Improve the readability of the program
  - Improve the program's performance
- - Add more features
+ - Pair Image-Data with Sensor Data (draw to the image and display, save to a file with metadata, etc.)
  - Add the ability to control the move distances
  - Get input in the image screen
 
