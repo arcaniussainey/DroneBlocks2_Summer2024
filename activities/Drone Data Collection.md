@@ -1,4 +1,4 @@
-# Remote Controlled Drone
+# Drone Data Collection
 The goal of this activity is to implement a program which allows you to collect data in the field using your drone.
 
 # Project Requirements
