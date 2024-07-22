@@ -1,5 +1,5 @@
+This program is an example of a threaded program with user input and a camera view.
 
-This program 
 ```Python
 from droneblocks.DroneBlocksTello import DroneBlocksTello
 import cv2
@@ -12,6 +12,8 @@ def read_camera(TelloInstance):
         img = cv2.resize(img, (360, 240))
         cv2.imshow("results", img)
         cv2.waitKey(1)
+        if program_active == False:
+            break
     cv2.destroyAllWindows() # close the window
     TelloInstance.streamoff() # disconnect from the Tello camera stream
 
