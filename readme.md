@@ -12,6 +12,15 @@ pip install droneblocks-python-utils
 ```bash
 pip install keyboard
 ```
+Run the following code:
+
+```Python
+import cv2
+import droneblocks
+
+print("Hello!")
+```
+
 
 In the case of the following error:
 ```text
