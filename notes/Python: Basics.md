@@ -486,6 +486,34 @@ Built-In Functions:
  - int
  - len
 
+
+# Exceptions & Exception handling
+In Python and many other high level languages, program errors generate what we call exceptions. An exception is a deviation from expected program behavior, or from defined program behavior. The nice thing about exceptions being generated, rather than your program just dying, is that it gives you the chance to handle them as well as the chance to exit in a safe manner. 
+
+In Python we can catch exceptions using the ```try``` keyword. The ```try``` keyword executes the code in its scope, and if an exception occurs it passes it off to what we call an exception handler. These are other statements underneath the try-block, with instructions on how to handle the instructions. The first handler that matches an exception is the one that will be used. There is additionally a ```finally``` handler, which always executes, and can be paired with a try block. Let's see an example Exception handler:
+
+```Python
+try:
+  a = "4" ** 4
+except Exception:
+  print("We had an error!")
+```
+
+This code will error, because strings don't support exponentiation. When it errors, instead of breaking the program, it will generate an unsupported operation exception. Python then looks for a handler. Our handler is for the ```Exception``` exception, which contains all exceptions, so it matches and runs the code. 
+
+We can also use else blocks in a try-except pair. An else-statement paired with a try-block will only execute if no exception was generated. See below:
+
+```Python
+try:
+  a = "Hello" * 4 # We CAN multiply strings, it repeats them
+except Exception:
+  print("We had an error!")
+else:
+  print("No error happened!")
+```
+
+Your primary use for exception handlers will be making sure that even when you exit/error out of your program, you send the code to safely land the drone. 
+
 # Imports 
 For functions we might need that aren't built-in to Python, we can use what are called modules. Modules are bundles of code other people wrote. We can use the ```import``` keyword to add them to our code. 
 
@@ -508,7 +536,7 @@ print(rand_number) # print out the number.
 773
 ```
 
-We call the ```randint``` function from the ```random``` module, which generates a random number between the parameters we pass it. There are too many modules to comment on them all here, so instead we'll mention modules when and as needed, and the functions we'll need. Though, here is a couple of useful modules:
+We call the ```randint``` function from the ```random``` module, which generates a random number between the parameters we pass it. There are too many modules to comment on them all here, so instead we'll mention modules when and as needed, and the functions we'll need. 
 
 ### time
 The ```time``` module provides tools for measuring time, waiting for a period time, getting the time, and timing functions. Some useful methods are:
