@@ -32,4 +32,7 @@ Please run the following in the command prompt:
 ```Python
 pip uninstall numpy
 pip install numpy==2.0.0
+
+pip uninstall opencv-python
+pip install opencv-python
 ```
