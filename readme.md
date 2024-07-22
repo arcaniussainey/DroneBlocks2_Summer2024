@@ -27,7 +27,7 @@ In the case of the following error:
 RuntimeError: module compiled against ABI version 0x1000009 but this version of numpy is 0x2000000
 ```
 
-Please run the following:
+Please run the following in the command prompt:
 
 ```Python
 pip uninstall numpy
