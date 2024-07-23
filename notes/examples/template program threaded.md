@@ -1,3 +1,4 @@
+```Python
 from droneblocks.DroneBlocksTello import DroneBlocksTello
 
 def threaded_function(TelloReference): # telloReference should be our drone
@@ -15,3 +16,4 @@ if __name__ == "__main__": # This prevents accidentally starting a thread of the
             
     except Exception: # Something happened, such as a keyboard interrupt or error
         tello.land()
+```
