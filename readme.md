@@ -36,3 +36,12 @@ pip install numpy==2.0.0
 pip uninstall opencv-python
 pip install opencv-python
 ```
+
+# Disable OpenCV Errors:
+
+```Python
+import os
+
+os.environ['OPENCV_LOG_LEVEL'] = 'OFF'
+os.environ['OPENCV_FFMPEG_LOGLEVEL'] = "-8"
+```
