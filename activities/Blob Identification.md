@@ -192,7 +192,7 @@ contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIM
 ```
 It finds contours - which are the shapes of the white spots (remember these are the spots where our color was in the image), and it finds the hierarchy of contours - something we'll ignore for our purposes but describes the relationship between the white spots. ```contours``` is a list of all of the white-blobs in our mask (the black and white image). This section:
 
-```
+```Python
 for contour in contours:
     area = cv2.contourArea(contour) # Get the area of the contours
     print("The area is: " + str(area))
