@@ -96,3 +96,190 @@ upon error:
 # Useful Tutorials:
 - Python: Basics
 - OpenCV: Basics
+
+
+# Project Guide
+
+We would suggest that you start from the drone-camera example project. This project makes it easy to work with just the camera features, and allows you to collect any measurements you need, and with threading you'll be able to just turn your code into a function and call it. We can even do that right away
+
+Example:
+```Python
+from droneblocks.DroneBlocksTello import DroneBlocksTello
+import cv2
+import numpy as np
+
+me = DroneBlocksTello()
+#cap = cv2.VideoCapture(0)
+me.connect(True)
+print(me.get_battery())
+me.streamon()
+
+def camera_function(tello):
+  while True:
+      img = me.get_frame_read().frame
+      #img = cv2.resize(img, (360, 240))
+      cv2.imshow("results", img)
+      cv2.waitKey(1)
+
+camera_function(me)
+```
+
+The next thing to do is to find out where we need to actually focus in this project. The top two segments of the code are just setting up the imports and creating an object. So we want to focus on our function:
+
+```Python
+def camera_function(tello):
+  while True:
+      img = me.get_frame_read().frame
+      #img = cv2.resize(img, (360, 240))
+      cv2.imshow("results", img)
+      cv2.waitKey(1)
+```
+
+First, let's find out where we're getting the image. It looks like the line ```img = me.get_frame_read().frame``` is what gathers our image for us. This would replace instances of ```imread```, for example ```im = cv2.imread("blob.jpeg")```. This also means that ```img``` is our image. By default, OpenCV will use BGR (Blue Green Red) color space, which just means the color values for each pixel will be in that order. 
+
+The next line is a comment, but the commented out section would resize our image to be 360x240 pixels. After that, we use ```cv2.imshow``` to show the image with the title "results". And then we wait for a key to be pressed for a single millisecond before restarting the loop. 
+
+With this, we have enough to subsitute any of our example code in. All we need to do is change the name of the image variable to match, and use the image from the camera instead of from a file. For example, our color area calculation example. If we ignore the imports (because we already did them in our new code) then this is all the code:
+
+```Python
+# Read the images 
+img = cv2.imread("shapes.jpg") # image to use
+  
+# Resizing the image 
+image = cv2.resize(img, (700, 600)) 
+  
+# Convert Image to Image HSV 
+hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV) 
+  
+# Defining lower and upper bound HSV values 
+lower = np.array([80, 20, 20])  # HSV - https://www.selecolor.com/en/hsv-color-picker/
+upper = np.array([240, 100, 245]) 
+  
+# Defining mask for detecting color 
+mask = cv2.inRange(hsv, lower, upper) 
+  
+# Display Image and Mask 
+cv2.imshow("Image", image) 
+cv2.imshow("Mask", mask) 
+
+contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+for contour in contours:
+    area = cv2.contourArea(contour) # Get the area of the contours
+    print("The area is: " + str(area))
+
+    x,y,w,h = cv2.boundingRect(contour)
+    cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+
+cv2.imshow("Image", image) 
+
+# Make python sleep for unlimited time 
+cv2.waitKey(0)
+```
+
+Remember that we can replace the image line in this code with the one from our drone code. We can also delete or change the code that resizes the image. ```hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)``` just changes the color from BGR to HSV, which means now we use Hue Saturation and Value to determine the color. The "color visualized" example shows us what those colors look like. These lines:
+
+```Python
+# Defining lower and upper bound HSV values 
+lower = np.array([80, 20, 20])  # HSV - https://www.selecolor.com/en/hsv-color-picker/
+upper = np.array([240, 100, 245]) 
+```
+
+Allow for us to choose the color range we want to search for, the lowest color, and the highest color. ```mask = cv2.inRange(hsv, lower, upper)``` will set all colors between the lower and upper color to white, and all other colors to black. This is called binary threshholding. After that, we show the two images to the user. This line performs the actual blob detection:
+
+```
+contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+```
+It finds contours - which are the shapes of the white spots (remember these are the spots where our color was in the image), and it finds the hierarchy of contours - something we'll ignore for our purposes but describes the relationship between the white spots. ```contours``` is a list of all of the white-blobs in our mask (the black and white image). This section:
+
+```
+for contour in contours:
+    area = cv2.contourArea(contour) # Get the area of the contours
+    print("The area is: " + str(area))
+
+    x,y,w,h = cv2.boundingRect(contour)
+    cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+```
+
+Loops over all of the contours using an interative for-loop. Inside that loop we calculate the area of each contour, draw it, create a rectangle around it (```boundingRect```), and then draw that rectangle on our image. The last few lines of the code show the images and wait, which we already have in our code. 
+
+Let's drop this code into our function and see if it works.
+
+```Python
+def camera_function(tello):
+  while True:
+      img = me.get_frame_read().frame
+      #img = cv2.resize(img, (360, 240))
+        
+      # Convert Image to Image HSV 
+      hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV) 
+        
+      # Defining lower and upper bound HSV values 
+      lower = np.array([80, 20, 20])  # HSV - https://www.selecolor.com/en/hsv-color-picker/
+      upper = np.array([240, 100, 245]) 
+        
+      # Defining mask for detecting color 
+      mask = cv2.inRange(hsv, lower, upper) 
+      # Display Image and Mask 
+      # cv2.imshow("Image", image) # We aren't doing this because we do it later
+      cv2.imshow("Mask", mask) 
+      
+      contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+      
+      for contour in contours:
+          area = cv2.contourArea(contour) # Get the area of the contours
+          print("The area is: " + str(area))
+      
+          x,y,w,h = cv2.boundingRect(contour)
+          cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+      
+      cv2.imshow("Image", image) 
+      cv2.waitKey(1)
+```
+
+
+And let's drop that function into the rest of our program:
+
+```Python
+from droneblocks.DroneBlocksTello import DroneBlocksTello
+import cv2
+import numpy as np
+
+me = DroneBlocksTello()
+#cap = cv2.VideoCapture(0)
+me.connect(True)
+print(me.get_battery())
+me.streamon()
+
+def camera_function(tello):
+  while True:
+      img = me.get_frame_read().frame
+      #img = cv2.resize(img, (360, 240))
+        
+      # Convert Image to Image HSV 
+      hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV) 
+        
+      # Defining lower and upper bound HSV values 
+      lower = np.array([80, 20, 20])  # HSV - https://www.selecolor.com/en/hsv-color-picker/
+      upper = np.array([240, 100, 245]) 
+        
+      # Defining mask for detecting color 
+      mask = cv2.inRange(hsv, lower, upper) 
+      # Display Image and Mask 
+      # cv2.imshow("Image", image) # We aren't doing this because we do it later
+      cv2.imshow("Mask", mask) 
+      
+      contours, hierarchy = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+      
+      for contour in contours:
+          area = cv2.contourArea(contour) # Get the area of the contours
+          print("The area is: " + str(area))
+      
+          x,y,w,h = cv2.boundingRect(contour)
+          cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),2)
+      
+      cv2.imshow("Image", image) 
+      cv2.waitKey(1)
+
+camera_function(me)
+```
