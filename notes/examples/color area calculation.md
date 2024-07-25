@@ -1,3 +1,4 @@
+```python
 # Importing the libraries OpenCV and numpy 
 import cv2 
 import numpy as np 
@@ -39,3 +40,4 @@ cv2.imshow("Image", image)
 
 # Make python sleep for unlimited time 
 cv2.waitKey(0)
+```
