@@ -30,7 +30,7 @@ while True:
     cv2.imshow("Ai Segment", ai_image)
     if cv2.waitKey(3) == ord('c'):
         # Save the images
-        cv2.imwrite("{0} Sub Image N-{1}.png".format(start_time, count), ai_subframe)
+        cv2.imwrite("{0} Sub Image N-{1}.png".format(start_time, count), ai_image)
         cv2.imwrite("{0} Whole Image N-{1}.png".format(start_time, count), img)
 
         count += 1 # increase count
