@@ -1,6 +1,6 @@
 Modules needed:
 ```bash
-pip install tensorflow
+pip install tensorflow==2.15
 pip install keras
 ```
 
@@ -46,9 +46,13 @@ while True:
 ```
 
 
-After this, we need to use these images to create a Machine learning model that camn recognize different things. 
+After this, we need to use these images to create a Machine learning model that can recognize different things. We can do this by collecting images, and heading over to teachable machine!
+![image](https://github.com/user-attachments/assets/e122aa59-870e-4018-8cad-7e54ff838689)
 
-Once we're done with that, we can detect them using something like this:
+
+![image](https://github.com/user-attachments/assets/a8485e29-2264-41f9-98cf-ab6aad73d66d)
+
+Once we're done with that, we can detect them using code like this:
 
 ```Python
 from droneblocks.DroneBlocksTello import DroneBlocksTello
@@ -117,3 +121,6 @@ while True:
     if keyboard_input == 27:
         break
 ```
+All this does is use the model you trained and placed with your program, to score what is in the purple region of the drone. Here is what the variables mean:
+ - class_name = what the drone thinks it's seeing
+ - confidence_score = the percentage of confidence (0.0-1.0, convet to 0-100 by multiplying 100)
