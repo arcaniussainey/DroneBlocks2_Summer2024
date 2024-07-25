@@ -1,3 +1,9 @@
+Modules needed:
+```bash
+pip install tensorflow
+pip install keras
+```
+
 
 This will let us see and capture images from the drone by pressing the "c" key:
 
