@@ -5,6 +5,7 @@ This will let us see and capture images from the drone by pressing the "c" key:
 from droneblocks.DroneBlocksTello import DroneBlocksTello
 import cv2
 import time
+import os
 
 me = DroneBlocksTello()
 #cap = cv2.VideoCapture(0)
@@ -14,13 +15,14 @@ me.streamon()
 
 
 def ai_subframe(image, imgX, imgY):
-    subframe = img[imgY:imgY+224, imgX:imgY+224]
+    subframe = img[imgY:imgY+224, imgX:imgY+224].copy()
     image = cv2.rectangle(image,(imgX,imgY),(imgX+224,imgY+224),(255,0,140),2)
 
     return image, subframe
 
 start_time = str(time.time()).split(".")[0]
 count = 0
+path = os.getcwd()
 
 while True:
     img = me.get_frame_read().frame
@@ -30,8 +32,9 @@ while True:
     cv2.imshow("Ai Segment", ai_image)
     if cv2.waitKey(33) == ord('c'):
         # Save the images
-        cv2.imwrite("{0} Sub Image N-{1}.png".format(start_time, count), ai_image)
-        cv2.imwrite("{0} Whole Image N-{1}.png".format(start_time, count), img)
+        print("Saved File(s)! {0} and {1}".format("{0} Sub Image N-{1}.png".format(start_time, count), "{0} Whole Image N-{1}.png".format(start_time, count)))
+        cv2.imwrite(os.path.join(path, "{0} Sub Image N-{1}.png".format(start_time, count)), ai_image)
+        cv2.imwrite(os.path.join(path, "{0} Whole Image N-{1}.png".format(start_time, count)), img)
 
         count += 1 # increase count
 ```
