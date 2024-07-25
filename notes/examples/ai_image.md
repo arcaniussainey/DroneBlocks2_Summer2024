@@ -14,7 +14,7 @@ me.streamon()
 
 
 def ai_subframe(image, imgX, imgY):
-    subframe = crop_img = img[imgY:imgY+224, imgX:imgY+224]
+    subframe = img[imgY:imgY+224, imgX:imgY+224]
     image = cv2.rectangle(image,(imgX,imgY),(imgX+224,imgY+224),(255,0,140),2)
 
     return image, subframe
@@ -28,7 +28,7 @@ while True:
     img, ai_image = ai_subframe(img, 80, 80)
     cv2.imshow("results", img)
     cv2.imshow("Ai Segment", ai_image)
-    if cv2.waitKey(3) == ord('c'):
+    if cv2.waitKey(33) == ord('c'):
         # Save the images
         cv2.imwrite("{0} Sub Image N-{1}.png".format(start_time, count), ai_image)
         cv2.imwrite("{0} Whole Image N-{1}.png".format(start_time, count), img)
