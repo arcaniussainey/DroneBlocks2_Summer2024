@@ -2,6 +2,12 @@
 
 This is for the DroneBlocks 2.0 camp!
 
+# Dependencies
+ - Numpy
+ - OpenCV 4.10
+ - Tensorflow 2.15
+ - Keras
+ - Matplotlib
 
 # Modules to Install:
 
