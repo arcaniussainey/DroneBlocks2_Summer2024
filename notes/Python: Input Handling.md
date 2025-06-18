@@ -51,7 +51,7 @@ if __name__ == "__main__":
 
 
 ## Handling Non-Blocking Input
-
+We could use threads (addressed elsewhere) but it's likely better to use the `keyboard` module. 
 # Parsing, Processing, and Input
 
 # Files as User Input
