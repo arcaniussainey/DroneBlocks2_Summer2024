@@ -45,7 +45,7 @@ print("- Faster drain in the afternoon (heavy usage)")
 print("- Critical battery levels after 8 PM")
 ```
 
-This single graph tells a story that would be hard to see in a table of numbers. That's the power of data visualization!
+This single graph tells a story that would be hard to see in a table of numbers. That's the power of data visualization! (Note that the data isn't really super meaningful, I mainly wanted to show off it having annotation and visualization)
 
 ## What is MatPlotLib?
 
